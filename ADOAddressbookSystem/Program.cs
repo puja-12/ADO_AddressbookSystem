@@ -11,7 +11,7 @@ namespace ADOAddressbookSystem
         {
        
             AddressBookData addressBookData = new AddressBookData();
-            Console.WriteLine("Select option\n1)Create AddrssBookServiceDatabase\n2)Create AddressBookTable\n3)insert data into table");
+            Console.WriteLine("Select option\n1)Create AddrssBookServiceDatabase\n2)Create AddressBookTable\n3)insert data into table\n4)update data");
             int op = Convert.ToInt16(Console.ReadLine());
             switch (op)
             {
@@ -23,21 +23,25 @@ namespace ADOAddressbookSystem
                     break;
                 case 3:
                     AddressBookModel addressbook = new AddressBookModel();
-                    addressbook.FirstName = "Pooja";
-                    addressbook.LastName = "Rana";
-                    addressbook.Address = "Meerut";
-                    addressbook.City = "Meerut";
-                    addressbook.State = "UP";
-                    addressbook.Zip = "234576";
-                    addressbook.PhoneNumber = "1234567890";
-                    addressbook.Email = "puja@gmail.com";
+                    addressbook.FirstName = "Mansi";
+                    addressbook.LastName = "Tomar";
+                    addressbook.Address = "ABC colony";
+                    addressbook.City = "Gurgaon";
+                    addressbook.State = "Haryana";
+                    addressbook.Zip = "110055";
+                    addressbook.PhoneNumber = "8234575645";
+                    addressbook.Email = "mansi@gmail.com";
                     addressBookData.AddContact(addressbook);
                     Console.WriteLine("Record Inserted successfully");
+                    break;
+                case 4:
+                    addressBookData.updateEmployeeDetails();
                     break;
                 default:
                     Console.WriteLine("Please choose the correct option!");
                     break;
             }
         }
+
     }
 }
