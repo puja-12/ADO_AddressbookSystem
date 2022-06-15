@@ -11,7 +11,7 @@ namespace ADOAddressbookSystem
         {
        
             AddressBookData addressBookData = new AddressBookData();
-            Console.WriteLine("Select option\n1)Create AddrssBookServiceDatabase\n2)Create AddressBookTable\n3)insert data into table\n4)update data\n5)delete data from table\n6)get contact by city or state name");
+            Console.WriteLine("Select option\n1)Create AddrssBookServiceDatabase\n2)Create AddressBookTable\n3)insert data into table\n4)update data\n5)delete data from table\n6)get contact by city or state name\n7)retrieve counnt of records by city or state name");
             int op = Convert.ToInt16(Console.ReadLine());
             switch (op)
             {
@@ -42,11 +42,17 @@ namespace ADOAddressbookSystem
                     break;
                 case 6:
                     Console.WriteLine("Get Contacts by City name");
-                    //addressBookData.GetAllContactByCity();
+                    addressBookData.GetAllContactByCity();
                     Console.WriteLine("Get Contacts by state name");
                     addressBookData.GetAllContactByState();
                     break;
-              
+                case 7:
+                    int countCity = addressBookData.CountOfEmployeeDetailsByCity();
+                    Console.WriteLine("Count of Records for given City :" + countCity);
+                    int CountState = addressBookData.CountOfEmployeeDetailsByState();
+                    Console.WriteLine("Count of Records for given State :" + CountState);
+                    break;
+
                 default:
                     Console.WriteLine("Please choose the correct option!");
                     break;
