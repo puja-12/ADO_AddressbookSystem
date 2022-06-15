@@ -106,6 +106,16 @@ namespace ADOAddressbookSystem
             connection.Close();
             return (addressmodel.Address);
         }
+        public void deleteEmployeeDetails()
+        {
+            SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-DMPB7U8\MSSQLSERVER01; Initial Catalog =AddressBookForADO; Integrated Security = True; TrustServerCertificate=True;");
+            connection.Open();
+            string query = @"DELETE FROM AddressBook where FirstName = 'Mansi'";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            object res = cmd.ExecuteScalar();
+            connection.Close();
+
+        }
     }
 }
 

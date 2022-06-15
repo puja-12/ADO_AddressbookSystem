@@ -11,7 +11,7 @@ namespace ADOAddressbookSystem
         {
        
             AddressBookData addressBookData = new AddressBookData();
-            Console.WriteLine("Select option\n1)Create AddrssBookServiceDatabase\n2)Create AddressBookTable\n3)insert data into table\n4)update data");
+            Console.WriteLine("Select option\n1)Create AddrssBookServiceDatabase\n2)Create AddressBookTable\n3)insert data into table\n4)update data\n5)delete data from table");
             int op = Convert.ToInt16(Console.ReadLine());
             switch (op)
             {
@@ -36,6 +36,9 @@ namespace ADOAddressbookSystem
                     break;
                 case 4:
                     addressBookData.updateEmployeeDetails();
+                    break;
+                case 5:
+                    addressBookData.deleteEmployeeDetails();
                     break;
                 default:
                     Console.WriteLine("Please choose the correct option!");
