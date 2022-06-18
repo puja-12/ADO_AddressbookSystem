@@ -322,10 +322,20 @@ namespace ADOAddressbookSystem
             int Count = (int)res;
             return Count;
         }
-
-
-
+        public void AddContactAsFriendAndFamily()
+        {
+            SqlConnection Connection = new SqlConnection(@"Data Source=DESKTOP-DMPB7U8\MSSQLSERVER01; Initial Catalog =AddressBookForADO; Integrated Security = True;");
+            connection.Open();
+            string query = @"Insert into AddressBook Values ('krishna','Mounica','GDVL','NSTATION','Andhra Pradesh','520012','121413711821','Mouni@gmail.com','School','Friend'),
+                            ('krishna','Mounica','GDVL','NSTATION','Andhra Pradesh','520012','121413711821','Mouni@gmail.com','Family','Sister');";
+            SqlCommand command = new SqlCommand(query, connection);
+            object res = command.ExecuteScalar();
+            connection.Close();
         }
+
+
+
+    }
 }
 
 
