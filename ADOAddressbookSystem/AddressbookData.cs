@@ -249,9 +249,20 @@ namespace ADOAddressbookSystem
             {
                 Console.WriteLine(e.Message);
             }
+
+        }
+            public void AddAddressBookNameAndType()
+            {
+                SqlConnection Connection = new SqlConnection(@"Data Source=DESKTOP-DMPB7U8\MSSQLSERVER01; Initial Catalog =AddressBookForADO; Integrated Security = True;");
+                connection.Open();
+                string query = @"alter table AddressBook add AddressBookName Varchar(50), AddressBookType Varchar(50);";
+                SqlCommand command = new SqlCommand(query, connection);
+                object res = command.ExecuteScalar();
+                connection.Close();
+            }
         }
 
     }
-}
+
 
 

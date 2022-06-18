@@ -15,4 +15,11 @@ create procedure [SpAddressBook]
  End
 
  SELECT * FROM AddressBook;
- 
+
+
+ --------------------uc_9_Adding AdressBook Name and Type-----------------------------
+update AddressBook set AddressBookName ='Self',AddressBookType='Self' where ID=1;
+update AddressBook set AddressBookName ='Relative',AddressBookType='Cousin' where ID=2; 
+update AddressBook set AddressBookName ='Profession',AddressBookType='Colleague' where ID=4; 
+
+select * from AddressBook
