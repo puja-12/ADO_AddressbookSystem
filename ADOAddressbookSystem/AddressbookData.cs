@@ -251,18 +251,82 @@ namespace ADOAddressbookSystem
             }
 
         }
-            public void AddAddressBookNameAndType()
-            {
-                SqlConnection Connection = new SqlConnection(@"Data Source=DESKTOP-DMPB7U8\MSSQLSERVER01; Initial Catalog =AddressBookForADO; Integrated Security = True;");
-                connection.Open();
-                string query = @"alter table AddressBook add AddressBookName Varchar(50), AddressBookType Varchar(50);";
-                SqlCommand command = new SqlCommand(query, connection);
-                object res = command.ExecuteScalar();
-                connection.Close();
-            }
+        public void AddAddressBookNameAndType()
+        {
+            SqlConnection Connection = new SqlConnection(@"Data Source=DESKTOP-DMPB7U8\MSSQLSERVER01; Initial Catalog =AddressBookForADO; Integrated Security = True;");
+            connection.Open();
+            string query = @"alter table AddressBook add AddressBookName Varchar(50), AddressBookType Varchar(50);";
+            SqlCommand command = new SqlCommand(query, connection);
+            object res = command.ExecuteScalar();
+            connection.Close();
         }
 
-    }
+        public void GetContactsBYAddressBookType()
+        {
+            try
+            {
+                AddressBookModel addressmodel = new AddressBookModel();
+                SqlConnection Connection = new SqlConnection(@"Data Source=LAPTOP-7SFIPVKT; Initial Catalog =AddressBookForADO; Integrated Security = True;");
+                using (this.connection)
+                {
+                    string Query = @"Select * from AddressBook where AddressBookType='Friend';";
+                    SqlCommand cmd = new SqlCommand(Query, this.connection);
+                    this.connection.Open();
+                    SqlDataReader datareader = cmd.ExecuteReader();
+                    if (datareader.HasRows)
+                    {
+                        while (datareader.Read())
+                        {
+                            addressmodel.AddressBookId = datareader.GetInt32(0);
+                            addressmodel.FirstName = datareader.GetString(1);
+                            addressmodel.LastName = datareader.GetString(2);
+                            addressmodel.Address = datareader.GetString(3);
+                            addressmodel.City = datareader.GetString(4);
+                            addressmodel.State = datareader.GetString(5);
+                            addressmodel.Zip = datareader.GetString(6);
+                            addressmodel.PhoneNumber = datareader.GetString(7);
+                            addressmodel.Email = datareader.GetString(8);
+                            addressmodel.AddressBookName = datareader.GetString(9);
+                            addressmodel.AddressBookType = datareader.GetString(10);
+
+                            Console.WriteLine(addressmodel.FirstName + " " +
+                                addressmodel.LastName + " " +
+                                addressmodel.Address + " " +
+                                addressmodel.City + " " +
+                                addressmodel.State + " " +
+                                addressmodel.Zip + " " +
+                                addressmodel.PhoneNumber + " " +
+                                addressmodel.Email + " " +
+                                addressmodel.AddressBookName + " " +
+                                addressmodel.AddressBookType + " "
+
+                                );
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+        public int CountOfEmployeeDetailsByType()
+        {
+            int count;
+            SqlConnection Connection = new SqlConnection(@"Data Source=LAPTOP-7SFIPVKT; Initial Catalog =AddressBookForADO; Integrated Security = True;");
+            connection.Open();
+            string Query = @"Select count(*) from AddressBook where AddressBookType='Colleague';";
+            SqlCommand command = new SqlCommand(Query, connection);
+            object res = command.ExecuteScalar();
+            connection.Close();
+            int Count = (int)res;
+            return Count;
+        }
+
+
+
+        }
+}
 
 
 
