@@ -266,7 +266,7 @@ namespace ADOAddressbookSystem
             try
             {
                 AddressBookModel addressmodel = new AddressBookModel();
-                SqlConnection Connection = new SqlConnection(@"Data Source=LAPTOP-7SFIPVKT; Initial Catalog =AddressBookForADO; Integrated Security = True;");
+                SqlConnection Connection = new SqlConnection(@"Data Source=DESKTOP-DMPB7U8\MSSQLSERVER01; Initial Catalog =AddressBookForADO; Integrated Security = True;");
                 using (this.connection)
                 {
                     string Query = @"Select * from AddressBook where AddressBookType='Friend';";
@@ -313,7 +313,7 @@ namespace ADOAddressbookSystem
         public int CountOfEmployeeDetailsByType()
         {
             int count;
-            SqlConnection Connection = new SqlConnection(@"Data Source=LAPTOP-7SFIPVKT; Initial Catalog =AddressBookForADO; Integrated Security = True;");
+            SqlConnection Connection = new SqlConnection(@"Data Source=DESKTOP-DMPB7U8\MSSQLSERVER01; Initial Catalog =AddressBookForADO; Integrated Security = True;");
             connection.Open();
             string Query = @"Select count(*) from AddressBook where AddressBookType='Colleague';";
             SqlCommand command = new SqlCommand(Query, connection);
